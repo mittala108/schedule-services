@@ -8,8 +8,10 @@ router.get('/send_review_message_backpacking_trip/:dateParam/:user_ns',(req,res)
 
     const newDate=new Date(req.params.dateParam);
     const job=uuidv4();
+    console.log(newDate,'send_review_message_schedule');
     scheduler.scheduleJob(`${job}`,newDate,()=>{
-        sendReviewMessageToCustomer(req.params.user_ns);
+        console.log(newDate,'send_review_message_schedule');
+        //sendReviewMessageToCustomer(req.params.user_ns);
         scheduler.cancelJob(`${job}`);
     });
 

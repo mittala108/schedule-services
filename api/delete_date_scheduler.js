@@ -6,14 +6,11 @@ const scheduler=require('node-schedule');
 
 router.get('/delete_scheduler_backpacking_trip/:dateParam/:package_date_id',(req,res)=>{
     
-    console.log('i am here');
     const newDate=new Date(req.params.dateParam);
-    console.log(newDate);
-    console.log(req.params.package_date_id);
     const job=uuidv4();
+    console.log(newDate,'delete_date_schedule');
     scheduler.scheduleJob(`${job}`,newDate,()=>{
         deleteBackpackingTripPackageDate(req.params.package_date_id); 
-        console.log("ddhdhdhdhdbjhadjhbjbbjbjhbjhbjbjbjhb");
         scheduler.cancelJob(`${job}`);                     
     });  
 
@@ -25,7 +22,7 @@ router.get('/delete_scheduler_backpacking_trip/:dateParam/:package_date_id',(req
 
 const deleteBackpackingTripPackageDate=(package_date_id)=>{
 
-    fetch(`http://18.206.146.145:8000/admin/sub_routes/backpacking_trip_related_routes/backpacking_trip_package_dates/delete_date_and_cost_from_database/${package_date_id}`,{
+    fetch(`http://localhost:8000/admin/sub_routes/backpacking_trip_related_routes/backpacking_trip_package_dates/delete_date_and_cost_from_database/${package_date_id}`,{
         method:'DELETE'
     })
     .then(result=>{
