@@ -22,7 +22,7 @@ router.get('/delete_scheduler_backpacking_trip/:dateParam/:package_date_id',(req
 
 const deleteBackpackingTripPackageDate=(package_date_id)=>{
 
-    fetch(`http://localhost:8000/admin/sub_routes/backpacking_trip_related_routes/backpacking_trip_package_dates/delete_date_and_cost_from_database/${package_date_id}`,{
+    fetch(`http://65.1.3.99:8000/api/backpacking_trip_related_routes/backpacking_trip_package_dates/delete_date_and_cost_from_database/${package_date_id}`,{
         method:'DELETE'
     })
     .then(result=>{
